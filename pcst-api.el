@@ -7,6 +7,7 @@
 (require 'cl)
 (require 'json)
 (require 'url)
+(require 'url-handlers)
 (require 'glof)
 
 (cl-defun pcst-api-init (&key host port)
@@ -29,11 +30,9 @@
              (url-request-method "POST")
              (url-request-data
               json-string))
-    (with-current-buffer
-        (url-retrieve-synchronously
-         (glof:get api :url))
-      (goto-char (point-min))
-      (re-search-forward "\n\n")
+    (with-temp-buffer
+      (url-insert-file-contents
+       (glof:get api :url))
       (json-read))))
 
 
