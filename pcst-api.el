@@ -25,11 +25,12 @@
                (glof:plist
                 :jsonrpc "2.0"
                 :method method
-                :id (random t)
-                :x-requested-with "XMLHttpRequest")))
+                :id (random t))))
              (url-request-method "POST")
              (url-request-data
-              json-string))
+              json-string)
+             (url-request-extra-headers
+              '(("X-Requested-With" . "XMLHttpRequest"))))
     (with-temp-buffer
       (url-insert-file-contents
        (glof:get api :url))
