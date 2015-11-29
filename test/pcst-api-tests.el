@@ -4,8 +4,8 @@
 
 ;;; Code:
 
-(ert-deftest pcst-api-test-get-channels
-    (cl-letf ((api (pcst-api-init :host "peca2.koti")))
-      (pcst-api-request api "getChannels" )))
+(ert-deftest pcst-api-test-get-channels ()
+  (cl-letf ((api (pcst-api-init :host "peca2.koti")))
+    (pcst-api-request api "getChannels")))
 
 ;;; pcst-api-tests.el ends here
